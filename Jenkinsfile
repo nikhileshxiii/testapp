@@ -1,27 +1,31 @@
 pipeline {
     agent any
 
-    stage('clean ws') {
-        cleanWs()
-    }
+    stages {
 
-    stage('checkoug scm') {
-        checkout scm
-    }
+        stage('clean ws') {
+            cleanWs()
+        }
 
-    stage('npm install deps') {
-        steps {
-            script {
-                sh 'npm install'
+        stage('checkoug scm') {
+            checkout scm
+        }
+
+        stage('npm install deps') {
+            steps {
+                script {
+                    sh 'npm install'
+                }
             }
         }
-    }
 
-    stage('npm test') {
-        steps {
-            script {
-                sh 'npm test'
+        stage('npm test') {
+            steps {
+                script {
+                    sh 'npm test'
+                }
             }
         }
+
     }
 }
