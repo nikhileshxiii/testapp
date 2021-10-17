@@ -18,11 +18,15 @@ pipeline {
     stages {
 
         stage('clean ws') {
-            cleanWs()
+            steps {
+                cleanWs()
+            }
         }
 
         stage('checkoug scm') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
 
         stage('npm install deps') {
